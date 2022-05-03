@@ -1,14 +1,16 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Item from '../components/Item';
 import styles from '../App.css';
+
 
 export default function List() {
   // set state
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [status, setStatus] = useState('all');
+  // const [status, setStatus] = useState('all');
+  const history = useHistory();
 
   useEffect(() => {
     async function setAndFetchCharacters() {
@@ -45,7 +47,7 @@ export default function List() {
                 name=""
                 id="status"
                 value={status}
-                onChange={(e) => setStatus(e.target.value)}
+                onChange={(e) => history.push(`/?status=${e.target.value}`)}
               >
                 <option value="all">All</option>
                 <option value="alive">Alive</option>
