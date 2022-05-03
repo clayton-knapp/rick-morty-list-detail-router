@@ -1,8 +1,8 @@
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  // Link
 } from 'react-router-dom';
 import List from './views/List';
 import Detail from './views/List';
@@ -12,17 +12,15 @@ import './App.css';
 
 export default function App() {
   return (
-    <Router>
       <Switch>
-        <Route path='character/:id'>
+        <Route path="/character/:id">
           <h2>Character Detail</h2>
           <Detail />
         </Route>
-        <Route path='/'>
+        <Route path="/">
           <h2>Rick & Morty Characters!</h2>
           <List />
         </Route>
       </Switch>  
-    </Router>
   );
 }

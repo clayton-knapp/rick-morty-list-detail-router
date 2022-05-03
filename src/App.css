@@ -32,3 +32,19 @@ body,
 .item img {
   width: 175px;
 }
+
+.detail {
+  width: 200px;
+  border: black 1px solid;
+  border-radius: 25px;
+  margin: 20px;
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail img {
+  width: 175px;
+}

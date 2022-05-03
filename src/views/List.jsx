@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import Item from '../components/Item';
 import styles from '../App.css';
 
@@ -27,14 +28,15 @@ export default function List() {
     <div className={styles['list']}>
       {
         isLoading
-          ? <p>Loading characters...</p>
+          ? (<p>Loading characters...</p>)
           : (
             characters.map((character) => (
-              <Item
-                key={character.id}
-                character={character}
-              >
-              </Item>
+                
+                <Item
+                  key={character.id}
+                  character={character}
+                >
+                </Item>
             ))
           )
       }
