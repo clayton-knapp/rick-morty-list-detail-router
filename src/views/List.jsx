@@ -31,12 +31,13 @@ export default function List() {
           ? (<p>Loading characters...</p>)
           : (
             characters.map((character) => (
-                
+              <Link to={`/character/${character.id}/`}>
                 <Item
                   key={character.id}
                   character={character}
                 >
                 </Item>
+              </Link>
             ))
           )
       }
