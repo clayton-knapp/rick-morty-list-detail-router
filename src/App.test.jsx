@@ -1,10 +1,17 @@
-import { findByText, render, screen } from '@testing-library/react';
+import {
+  findByText,
+  getByLabelText,
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
 describe('testing App', () => {
-  it('renders a list of characters', async () => {
+
+  it('Test the list view and the behavior of clicking on an item and displaying detail view', async () => {
     render(
       <MemoryRouter>
         <App />
@@ -28,6 +35,27 @@ describe('testing App', () => {
 
     // test to see if we get Summer Smiths gender on the detail page (not displayed on list page)
     await screen.findByText('Gender: Female');
+  });
+
+  it('Should test the behavior of the dropdown filter', async () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+
+    //sould wait for loading message to be removed
+    await waitForElementToBeRemoved(screen.getByText(/loading/i));
+
+
+    const select = screen.getByLabelText(/character status:/i);
+
+    // selectOptions(element, values, options)
+    userEvent.selectOptions(select, 'unknown');
+
+    // see if Fleeb is on screen
+    await screen.findByText('Fleeb');
+
 
 
   });
