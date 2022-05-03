@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import Item from '../components/Item';
 import styles from '../App.css';
 
@@ -11,12 +11,18 @@ export default function List() {
   const [isLoading, setIsLoading] = useState(true);
   // const [status, setStatus] = useState('all');
   const history = useHistory();
+  const location = useLocation(); //location object has a search property which comes after ? in url
+  const status = new URLSearchParams(location.search).get('status') ?? 'all';
 
   useEffect(() => {
     async function setAndFetchCharacters() {
       setIsLoading(true);
+
+      const search = new URLSearchParams(location.search);
+      const statusParam = search.get('status') ?? 'all'; // ?? allows you to use default value when evaluates to null or undefined
+
       const url =
-        status === 'all'
+        statusParam === 'all'
           ? 'https://rickandmortyapi.com/api/character'
           : `https://rickandmortyapi.com/api/character?status=${status}`;
       const resp = await fetch(url)
@@ -26,10 +32,10 @@ export default function List() {
       setIsLoading(false);
     }
     setAndFetchCharacters();
-  }, [status])
+  }, [location.search])
   
   // console.log('characters', characters);
-  console.log('status', status);
+  // console.log('status', status);
 
 
 
