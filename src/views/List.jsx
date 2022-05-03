@@ -20,25 +20,45 @@ export default function List() {
     setAndFetchCharacters();
   }, [])
   
-  console.log('characters', characters);
+  // console.log('characters', characters);
 
 
 
   return (
-    <div className={styles['list']}>
+    <div>
       {
         isLoading
           ? (<p>Loading characters...</p>)
           : (
-            characters.map((character) => (
-              <Link to={`/character/${character.id}/`}>
-                <Item
-                  key={character.id + character.name}
-                  character={character}
-                >
-                </Item>
-              </Link>
-            ))
+            <section>
+              <label
+                htmlFor='status'
+              >Character status:</label>
+              <select
+                name=""
+                id="status"
+                // value={status}
+                // onChange={handleStatusChange}
+              >
+                <option value="all">All</option>
+                <option value="alive">Alive</option>
+                <option value="dead">Dead</option>
+                <option value="unknown">Unknown</option>
+              </select>
+              <div className={styles['list']}>
+              {
+              characters.map((character) => (
+                <Link to={`/character/${character.id}/`}>
+                  <Item
+                    key={character.id + character.name}
+                    character={character}
+                    >
+                  </Item>
+                </Link>
+              ))
+                }
+                </div>
+            </section>
           )
       }
     </div>
