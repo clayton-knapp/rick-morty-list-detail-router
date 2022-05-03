@@ -34,7 +34,7 @@ body,
 }
 
 .detail {
-  width: 200px;
+  width: 500px;
   border: black 1px solid;
   border-radius: 25px;
   margin: 20px;
@@ -46,5 +46,5 @@ body,
 }
 
 .detail img {
-  width: 175px;
+  width: 400px;
 }

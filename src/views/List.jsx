@@ -33,7 +33,7 @@ export default function List() {
             characters.map((character) => (
               <Link to={`/character/${character.id}/`}>
                 <Item
-                  key={character.id}
+                  key={character.id + character.name}
                   character={character}
                 >
                 </Item>
