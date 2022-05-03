@@ -8,19 +8,26 @@ export default function List() {
   // set state
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [status, setStatus] = useState('all');
 
   useEffect(() => {
     async function setAndFetchCharacters() {
-      const resp = await fetch('https://rickandmortyapi.com/api/character')
+      setIsLoading(true);
+      const url =
+        status === 'all'
+          ? 'https://rickandmortyapi.com/api/character'
+          : `https://rickandmortyapi.com/api/character?status=${status}`;
+      const resp = await fetch(url)
       const data = await resp.json();
       // console.log('data', data);
       setCharacters(data.results);
       setIsLoading(false);
     }
     setAndFetchCharacters();
-  }, [])
+  }, [status])
   
   // console.log('characters', characters);
+  console.log('status', status);
 
 
 
@@ -37,8 +44,8 @@ export default function List() {
               <select
                 name=""
                 id="status"
-                // value={status}
-                // onChange={handleStatusChange}
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
               >
                 <option value="all">All</option>
                 <option value="alive">Alive</option>
