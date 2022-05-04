@@ -49,10 +49,10 @@ export default function List() {
         isLoading
           ? (<p>Loading characters...</p>)
           : (
-            <section>
-              <label
+            <section className={styles['container']}>
+              {/* <label
                 htmlFor='status'
-              >Character status:</label>
+              >Character status:</label> */}
               {/* <select
                 name=""
                 id="status"
@@ -79,7 +79,6 @@ export default function List() {
                 }
               </div>
               <Route path={`${path}/:id`}>
-                <h2>Character Detail</h2>
                 <Detail
                   characters={characters}
                 />

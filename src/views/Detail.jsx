@@ -30,24 +30,18 @@ export default function Detail({ characters }) {
     setCharacter(selectedChar);
   }, [id]);
 
-  
+  console.log('character', character.location?.name);
 
   return (
     <div className={styles['detail']}>
-      {/* {
-        isLoading
-          ? <p>Loading character...</p>
-          : ( */}
-            <div>
+
               <h3>{character.name}</h3>
               <img src={character.image} alt={`image of ${character.name}`} />
               <p>Species: {character.species}</p>
               <p>Status: {character.status}</p>
               <p>Gender: {character.gender}</p>
-              {/* <p>Location: {character.location.name}</p> */}
-            </div>
-          {/* )
-      } */}
+              <p>Location: {character.location?.name}</p>
+            
     </div>
   )
 }

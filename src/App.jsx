@@ -12,6 +12,7 @@ import './App.css';
 
 export default function App() {
   return (
+    <main>
       <Switch>
         {/* <Route path="/character/:id">
           <h2>Character Detail</h2>
@@ -21,6 +22,10 @@ export default function App() {
           <h2>Rick & Morty Characters!</h2>
           <List />
         </Route>
+        <Route path="/">
+          <h2>Home</h2>
+        </Route>
       </Switch>  
+    </main>
   );
 }

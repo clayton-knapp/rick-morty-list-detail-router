@@ -9,6 +9,12 @@ body,
 /* .App {
 } */
 
+
+.container {
+ display: grid;
+ grid: 1fr 1fr / 1fr 1fr;
+}
+
 .list {
   width: 300px;
   display: flex;
@@ -35,6 +41,7 @@ body,
 
 .detail {
   width: 500px;
+  height: 700px;
   border: black 1px solid;
   border-radius: 25px;
   margin: 20px;
