@@ -48,7 +48,9 @@ describe('testing App', () => {
     await waitForElementToBeRemoved(screen.getByText(/loading/i));
 
 
-    const select = screen.getByLabelText(/character status:/i);
+    const select = screen.getByRole('combobox', {
+      name: /character status:/i
+    });
 
     // selectOptions(element, values, options)
     userEvent.selectOptions(select, 'unknown');
@@ -59,4 +61,27 @@ describe('testing App', () => {
 
 
   });
+
+  it('Should test the detail page with initial entries and intial index', async () => {
+    render(
+      // intitial entries for Rick Sanchez and Marty Smith, but go to initalIndez 0 for Rick Sanchez
+      <MemoryRouter
+        initialEntries={['/character/1/', '/character/2/']}
+        initialIndex = {0}
+      > 
+        <App />
+      </MemoryRouter>
+    );
+
+    //sould wait for loading message to be removed
+    await waitForElementToBeRemoved(screen.getByText(/loading/i));
+
+    // see if Rick Sanchez is on screen
+    await screen.findByText('Rick Sanchez');
+
+
+
+  });
+
+
 });

@@ -62,10 +62,9 @@ export default function List() {
               </select>
               <div className={styles['list']}>
               {
-              characters.map((character) => (
-                <Link to={`/character/${character.id}/`}>
+                  characters.map((character) => (
+                    <Link to={`/character/${character.id}/`} key={character.id + character.name}>
                   <Item
-                    key={character.id + character.name}
                     character={character}
                     >
                   </Item>
