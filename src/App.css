@@ -9,8 +9,14 @@ body,
 /* .App {
 } */
 
+
+.container {
+ display: grid;
+ grid: 1fr 1fr / 1fr 1fr;
+}
+
 .list {
-  width: 900px;
+  width: 300px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -35,6 +41,7 @@ body,
 
 .detail {
   width: 500px;
+  height: 700px;
   border: black 1px solid;
   border-radius: 25px;
   margin: 20px;
