@@ -4,42 +4,50 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 
-export default function Detail() {
+export default function Detail({ characters }) {
   // state
   const [character, setCharacter] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   // useParams to grab id from url
   const { id } = useParams();
 
   useEffect(() => {
-    async function setAndFetchCharacter() {
-      const resp = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      const data = await resp.json();
-      console.log('data', data);
-      setCharacter(data);
-      setIsLoading(false);
-    };
-    setAndFetchCharacter();
-  }, []);
+    // async function setAndFetchCharacter() {
+    //   const resp = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+    //   const data = await resp.json();
+    //   console.log('data', data);
+    //   setCharacter(data);
+    //   setIsLoading(false);
+    // };
+    // setAndFetchCharacter();
+
+    console.log('characters', characters)
+    const selectedChar = characters.find((character) => {
+      // console.log('id', id);
+      // console.log('character.id', character.id);
+      return character.id === Number(id);
+    });
+    setCharacter(selectedChar);
+  }, [id]);
 
   
 
   return (
     <div className={styles['detail']}>
-      {
+      {/* {
         isLoading
           ? <p>Loading character...</p>
-          : (
+          : ( */}
             <div>
               <h3>{character.name}</h3>
               <img src={character.image} alt={`image of ${character.name}`} />
               <p>Species: {character.species}</p>
               <p>Status: {character.status}</p>
               <p>Gender: {character.gender}</p>
-              <p>Location: {character.location.name}</p>
+              {/* <p>Location: {character.location.name}</p> */}
             </div>
-          )
-      }
+          {/* )
+      } */}
     </div>
   )
 }

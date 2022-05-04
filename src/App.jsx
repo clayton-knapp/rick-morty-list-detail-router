@@ -13,11 +13,11 @@ import './App.css';
 export default function App() {
   return (
       <Switch>
-        <Route path="/character/:id">
+        {/* <Route path="/character/:id">
           <h2>Character Detail</h2>
           <Detail />
-        </Route>
-        <Route path="/">
+        </Route> */}
+        <Route path="/character">
           <h2>Rick & Morty Characters!</h2>
           <List />
         </Route>
